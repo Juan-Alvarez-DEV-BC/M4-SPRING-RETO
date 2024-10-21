@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_cuenta")
+@Table(name="cuentas")
 public abstract  class Cuenta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +27,7 @@ public abstract  class Cuenta {
     @Column(name = "saldo")
     private BigDecimal monto;
 
-    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaccion> transacciones;
 
     public Cuenta() {}

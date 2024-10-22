@@ -1,5 +1,6 @@
 package co.com.bancolombia.M4_SPRING_RETO.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -13,7 +14,7 @@ public class Transaccion {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "tipo_trx")
+    @Column(name = "tipo")
     private String tipoTrx;       // "RETIRO" - "DEPOSITO" o "COMPRA"
 
     @Column(name = "valor")
@@ -24,6 +25,7 @@ public class Transaccion {
 
     @ManyToOne
     @JoinColumn(name = "id_cuenta", nullable = false)
+    @JsonIgnore
     private Cuenta cuenta;
 
     public Transaccion(String tipoTrx, BigDecimal monto, LocalDateTime fecha, Cuenta cuenta) {
@@ -82,7 +84,6 @@ public class Transaccion {
                 ", tipoTrx='" + tipoTrx + '\'' +
                 ", monto=" + monto +
                 ", fecha=" + fecha +
-                ",  " + cuenta.toString() +
                 '}';
     }
 }

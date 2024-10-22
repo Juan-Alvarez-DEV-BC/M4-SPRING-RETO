@@ -25,6 +25,7 @@ public class CrearCuentaDTO {
     @NotEmpty(message ="El Tipo de Cuenta es Obligatorio")
     @Size(max = 10, message = "El Tipo de Cuenta debe tener un máximo de 10 caracteres!")
     @Size(min = 5, message = "El titular debe tener un mínimo de 6 caracteres!")
+    @Pattern(regexp = "^(BASICA|PREMIUM)$", message = "El Tipo de Cuenta solo puede ser 'BASICA' o 'PREMIUM'")
     private String tipoCuenta;
 
    public CrearCuentaDTO() {

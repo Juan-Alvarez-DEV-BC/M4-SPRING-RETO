@@ -118,7 +118,8 @@ public abstract  class Cuenta {
     }
 
     public void validaSaldo(BigDecimal valor){
-        if (valor.compareTo(this.getMonto()) < 0) {
+        int compara = valor.compareTo(this.getMonto());
+        if (valor.compareTo(this.getMonto()) > 0) {
             throw new IllegalArgumentException("Saldo insuficiente");
         }
     }
@@ -130,7 +131,6 @@ public abstract  class Cuenta {
                 ", nroCuenta='" + nroCuenta + '\'' +
                 ", nombreTitular='" + nombreTitular + '\'' +
                 ", monto=" + monto +
-                ", transacciones=" + transacciones +
                 '}';
     }
 }

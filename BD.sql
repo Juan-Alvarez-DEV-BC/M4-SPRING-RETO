@@ -1,6 +1,6 @@
 CREATE TABLE cuentas (
      id          SERIAL        PRIMARY KEY,
-     nro_cuenta  Varchar(10)   NOT NULL,
+     nro_cuenta  Varchar(10)   NOT NULL UNIQUE,
      titular     Varchar(255)  NOT NULL,
      saldo       Numeric(19,2) NOT NULL,
      tipo_cuenta Varchar(10)   NOT NULL
